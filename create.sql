@@ -9,10 +9,10 @@ DROP TABLE IF EXISTS cars;
 
 CREATE TABLE cars(
 id INT auto_increment primary key, 
-vin varchar(17), 
+vin varchar(30) UNIQUE, 
 manufacturer varchar(50), 
 model varchar(50), 
-year INT, 
+year SMALLINT, 
 color varchar(20)
 ); 
 CREATE TABLE customers(
@@ -42,7 +42,7 @@ date DATE,
 car_id INT, 
 customer_id INT, 
 salesperson_id INT,
-FOREIGN KEY (car_id) REFERENCES cars(id),
+FOREIGN KEY (car_id) REFERENCES cars(id) ON DELETE CASCADE,
 FOREIGN KEY (customer_id) references customers(id), 
 FOREIGN KEY (salesperson_id) references salespersons(id)
 ); 
